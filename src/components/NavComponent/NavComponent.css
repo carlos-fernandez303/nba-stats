@@ -1,0 +1,19 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #f6f6f6 !important;
+}
+.logo {
+  text-decoration: none;
+  font-family: "Playball", cursive;
+  font-size: 4rem !important;
+  color: white !important;
+}
+.nav-links {
+  font-family: "Oswald", sans-serif;
+  text-decoration: none;
+  font-size: 3rem;
+  color: white;
+}

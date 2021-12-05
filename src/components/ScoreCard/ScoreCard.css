@@ -1,0 +1,22 @@
+.col {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+}
+
+.border-container {
+  border: 4px solid grey;
+}
+
+img {
+  width: auto;
+  height: 5rem;
+  padding-top: 0.5rem;
+}
+
+.container {
+  color: black !important;
+}
+
+.row {
+}

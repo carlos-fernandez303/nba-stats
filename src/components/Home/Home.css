@@ -1,0 +1,16 @@
+.games-header {
+  color: black;
+  padding-top: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 4rem !important;
+  font-weight: 900;
+}
+
+.form {
+  display: flex;
+  margin: auto;
+}
+
+body {
+  padding-top: 7vh;
+}
