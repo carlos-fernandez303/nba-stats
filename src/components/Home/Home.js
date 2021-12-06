@@ -30,7 +30,7 @@ const Home = () => {
     <Container>
       <Row>
         <Col className="games-header">
-          Today's Games ({date[0]}/{date[1]}/{date[2]})
+          Today's Games - {date[0]}/{date[1]}/{date[2]}
         </Col>
       </Row>
 

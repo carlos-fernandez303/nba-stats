@@ -20,35 +20,40 @@ export default function ScoreCard(props) {
     props.teamsAbbreviation[1],
   ];
   return (
-    <>
-      <Container
-        style={{ paddingTop: "4rem", paddingBottom: "4rem", color: "white" }}
-      >
-        <div className="border-container">
-          <Row>
-            <Col style={{ borderRight: "2px solid grey" }}>
-              <img
-                src={"/nba-team-logos/" + homeTeam + ".png"}
-                alt={homeTeam + " logo"}
-              />{" "}
-              {homeAbbreviation}
-            </Col>
-            <Col style={{ borderRight: "2px solid grey" }}>{periodStatus}</Col>
-            <Col className="teamName">
-              <img
-                src={"/nba-team-logos/" + awayTeam + ".png"}
-                alt={awayTeam + " logo"}
-              />{" "}
-              {awayAbbreviation}
-            </Col>
-          </Row>
-          <Row>
-            <Col style={{ borderRight: "2px solid grey" }}>{homeScore}</Col>
-            <Col style={{ borderRight: "2px solid grey" }}>{timeStatus}</Col>
-            <Col>{awayScore}</Col>
-          </Row>
-        </div>
-      </Container>
-    </>
+    <Container
+      style={{
+        paddingTop: "4rem",
+        paddingBottom: "4rem",
+        maxWidth: "50rem",
+      }}
+    >
+      <Row className="border-container justify-content-md-center">
+        <Col
+          xs
+          style={{
+            borderRight: "2px solid grey",
+          }}
+        >
+          <img
+            src={"/nba-team-logos/" + homeTeam + ".png"}
+            alt={homeTeam + " logo"}
+          />
+          <div>{homeAbbreviation}</div>
+          <div>{homeScore}</div>
+        </Col>
+        <Col xs style={{ borderRight: "2px solid grey" }}>
+          <div>{periodStatus}</div>
+          <div>{timeStatus}</div>
+        </Col>
+        <Col xs>
+          <img
+            src={"/nba-team-logos/" + awayTeam + ".png"}
+            alt={awayTeam + " logo"}
+          />
+          <div>{awayAbbreviation}</div>
+          <div>{awayScore}</div>
+        </Col>
+      </Row>
+    </Container>
   );
 }

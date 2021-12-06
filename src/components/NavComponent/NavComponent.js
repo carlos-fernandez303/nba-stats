@@ -11,21 +11,28 @@ const NavComponent = () => {
         expand="lg"
         style={{
           borderBottom: "1px solid grey",
-          height: "10vh",
+
           backgroundColor: "#333",
         }}
       >
         <Container>
           <Navbar.Brand as="div">
             <Link to="/" className=" logo">
-              🏀NBA Stats
+              🏀
+              <span style={{ fontFamily: "Helvetica", fontWeight: "800" }}>
+                NBA
+              </span>{" "}
+              Stats
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             style={{ backgroundColor: "white" }}
           />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            style={{ backgroundColor: "#333" }}
+          >
             <Nav className="me-auto" style={{ paddingLeft: "4rem" }}>
               <Nav.Link as="div">
                 <Link to="players" className="nav-links">
