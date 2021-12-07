@@ -7,7 +7,7 @@ import Players from "./components/Players/Players";
 import Teams from "./components/Teams/Teams";
 import About from "./components/About/About";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>

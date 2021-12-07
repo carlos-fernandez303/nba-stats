@@ -1,19 +1,24 @@
 import "./Home.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import ScoreCard from "../ScoreCard/ScoreCard";
-import { Container, Row, Col } from "react-bootstrap";
-
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import DatePicker from "react-date-picker";
+import "react-datepicker/dist/react-datepicker.css";
 const Home = () => {
+  const currentDate = new Date();
   const [gameData, setGameData] = useState(null);
-  const [date, setDate] = useState([]);
+  const [date, setDate] = useState([
+    currentDate.getFullYear(),
+    currentDate.getMonth() + 1,
+    currentDate.getDate(),
+  ]);
+
+  const [formDate, setFormDate] = useState(new Date());
 
   useEffect(() => {
-    const date = new Date();
-    setDate([date.getMonth() + 1, date.getDate(), date.getFullYear()]);
     fetch(
       // prettier-ignore
-      `https://www.balldontlie.io/api/v1/games?dates[]=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+      `https://www.balldontlie.io/api/v1/games?dates[]=${date[0]}-${date[1]}-${date[2]}`
     )
       .then((response) => response.json())
       .then(
@@ -25,12 +30,38 @@ const Home = () => {
           alert(error);
         }
       );
-  }, []);
+  }, [date]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let gameDate = formDate.toISOString().split("T")[0].split("-");
+    setDate([gameDate[0], gameDate[1], gameDate[2]]);
+    console.log(date);
+  };
+
   return (
     <Container>
       <Row>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="text-center">
+            <DatePicker
+              value={formDate}
+              onChange={(date) => setFormDate(date)}
+            />
+            {/* <input
+              type="date"
+              value={formDate}
+              onChange={(e) => setFormDate(e.target.value)}
+            /> */}
+            <Button variant="dark" type="submit">
+              Submit
+            </Button>
+          </Form.Group>
+        </Form>
+      </Row>
+      <Row>
         <Col className="games-header">
-          Today's Games - {date[0]}/{date[1]}/{date[2]}
+          Today's Games - {date[1]}/{date[2]}/{date[0]}
         </Col>
       </Row>
 
