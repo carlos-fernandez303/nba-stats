@@ -1,7 +1,7 @@
 import "./Players.css";
 import { useEffect, useState, useRef } from "react";
 import { fetchPlayer, fetchSeasonAverage } from "./fetchData";
-import userEvent from "@testing-library/user-event";
+import { Link } from "react-router-dom";
 
 const Players = () => {
   const [players, setPlayers] = useState([]);
@@ -12,17 +12,18 @@ const Players = () => {
   const firstUpdate = useRef(true);
 
   useEffect(() => {
-    // if (firstUpdate.current) {
-    //   firstUpdate.current = false;
-    //   return;
-    // }
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     fetchPlayer(playerName).then(
       (data) => {
+        console.log(data.data);
         setPlayers(data.data);
-        fetchSeasonAverage(data).then((data) => {
-          // console.log(data.data);
-          setAverages(data.data);
-        });
+        // fetchSeasonAverage(data).then((data) => {
+        //   // console.log(data.data);
+        //   setAverages(data.data);
+        // });
       },
       (error) => {
         alert(error);
@@ -32,29 +33,17 @@ const Players = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formName);
     setPlayerName(formName);
-  };
-
-  const handleChange = (name) => {
-    setPlayerName(name);
-    let matches = [];
-    if (name.length > 0) {
-      matches = players.filter((player) => {
-        let fullName = player.first_name + " " + player.last_name;
-        const regex = new RegExp(`${name}`, "gi");
-        return fullName.match(regex);
-      });
-    }
-    console.log("matches", matches);
-    setSuggestions(matches);
-    setFormName(name);
   };
 
   return (
     <div>
-      <h1>{playerName}</h1>
-      <ul>
+      <h1>
+        {players.map((el) => (
+          <Link to="results">{el.first_name + " " + el.last_name}</Link>
+        ))}
+      </h1>
+      {/* <ul>
         {averages
           ? averages.map((el) => {
               return Object.keys(el).map((stat) => (
@@ -66,13 +55,10 @@ const Players = () => {
               ));
             })
           : ""}
-      </ul>
+      </ul> */}
       <form onSubmit={handleSubmit}>
         <h2>Enter a player name</h2>
-        <input
-          value={formName}
-          onChange={(e) => handleChange(e.target.value)}
-        />
+        <input value={formName} onChange={(e) => setFormName(e.target.value)} />
         <button type="submit">Submit</button>
       </form>
     </div>

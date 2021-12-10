@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import Players from "./components/Players/Players";
 import Teams from "./components/Teams/Teams";
 import About from "./components/About/About";
+import Results from "./components/Results/Results";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -15,9 +16,10 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<NavComponent />}>
           <Route path="/" element={<Home />} />
-          <Route path="players" element={<Players />} />
           <Route path="teams" element={<Teams />} />
           <Route path="about" element={<About />} />
+          <Route path="players" element={<Players />} />
+          <Route path="players/results" element={<Results />} />
           <Route
             path="*"
             element={
