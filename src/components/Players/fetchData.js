@@ -1,7 +1,5 @@
 export function fetchPlayer(playerName) {
-  return fetch(
-    `https://www.balldontlie.io/api/v1/players?search=${playerName}`
-  ).then((response) => response.json());
+  return;
 }
 
 export function fetchSeasonAverage(data) {

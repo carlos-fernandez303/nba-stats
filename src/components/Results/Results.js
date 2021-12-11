@@ -1,3 +1,6 @@
+import { useParams } from "react-router-dom";
+
 export default function Results(props) {
-  return <div>please work</div>;
+  const { id } = useParams();
+  return <div>{id}</div>;
 }
