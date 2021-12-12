@@ -4,6 +4,10 @@
   font-size: 2rem;
 }
 
+.team-score {
+  font-weight: 700;
+}
+
 .border-container {
   border: 4px solid grey;
 }

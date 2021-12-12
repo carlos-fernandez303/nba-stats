@@ -48,11 +48,6 @@ const Home = () => {
               value={formDate}
               onChange={(date) => setFormDate(date)}
             />
-            {/* <input
-              type="date"
-              value={formDate}
-              onChange={(e) => setFormDate(e.target.value)}
-            /> */}
             <Button variant="dark" type="submit">
               Submit
             </Button>
@@ -61,7 +56,7 @@ const Home = () => {
       </Row>
       <Row>
         <Col className="games-header">
-          Today's Games - {date[1]}/{date[2]}/{date[0]}
+          Games - {date[1]}/{date[2]}/{date[0]}
         </Col>
       </Row>
 

@@ -1,3 +1,19 @@
+h1 {
+  font-size: 3rem;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
 .players-button {
   background-color: lightgray;
 }
@@ -5,5 +21,19 @@
 .suggestion-entry {
   background-color: white;
   padding: 0.5rem;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.suggestion-entry:hover {
+  background-color: rgb(13, 204, 204);
+}
+
+.suggestion-link {
+  text-decoration: none;
+  color: black;
+}
+
+.suggestion-box {
   border: 1px solid grey;
 }

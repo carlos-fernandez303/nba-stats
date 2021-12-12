@@ -45,7 +45,7 @@ const Players = () => {
     if (name.length <= 2) {
       setIsLoading(true);
     }
-    if (name.length > 2 && name.length <= 4) {
+    if (name.length > 2 && name.length <= 20) {
       setPlayerName(name);
     }
   };
@@ -53,25 +53,52 @@ const Players = () => {
   return (
     <Container>
       <Row>
-        <Col md={8} lg={3} xl={3} className="mx-auto">
+        <Col md={8} lg={3} xl={5} className="mx-auto">
+          <h1>
+            Interested in a specific player's season averages? 📊
+            <br />
+            <br />
+          </h1>
+
+          <h2>Enter a name below to find out!</h2>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={8} lg={3} xl={5} className="mx-auto mt-5">
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="text-center">
-              <h2>Enter a player name</h2>
+            <Form.Group>
+              <h3>First and last name</h3>
 
               <InputGroup
                 value={playerName}
                 onChange={(e) => handleChange(e.target.value)}
               >
                 <FormControl
+                  required
                   placeholder="e.g. 'Lebron James'"
                   aria-label="Player name"
                   aria-describedby="basic-addon2"
+                  style={{
+                    border: "1px solid black",
+                    height: "5rem",
+                    fontSize: "2rem",
+                  }}
                 />
-                <Link to={`${players[0].id}`}>
+                {players.length === 0 || players[0].id == null ? (
                   <Button variant="dark" size="lg">
                     Submit
                   </Button>
-                </Link>
+                ) : (
+                  <Link to={`${players[0].id}`}>
+                    <Button
+                      variant="dark"
+                      size="lg"
+                      style={{ height: "5rem", width: "7rem" }}
+                    >
+                      Submit
+                    </Button>
+                  </Link>
+                )}
               </InputGroup>
             </Form.Group>
           </Form>
@@ -79,17 +106,22 @@ const Players = () => {
       </Row>
 
       <Row>
-        {isLoading ? (
+        {isLoading || players.length === 0 || players[0].id === null ? (
           ""
         ) : (
-          <Col md={8} lg={3} xl={3} className="mx-auto">
-            {players.map((el) => (
-              <div className="suggestion-entry" key={el.id}>
-                <Link to={`${el.id}`}>
-                  {el.first_name + " " + el.last_name}
+          <Col md={8} lg={3} xl={5} className="mx-auto">
+            <div className="suggestion-box">
+              {players.slice(0, 5).map((el) => (
+                <Link
+                  className="suggestion-link"
+                  to={`${el.first_name}-${el.last_name}/${el.id}`}
+                >
+                  <div className="suggestion-entry" key={el.id}>
+                    {el.first_name + " " + el.last_name}
+                  </div>
                 </Link>
-              </div>
-            ))}
+              ))}
+            </div>
           </Col>
         )}
       </Row>

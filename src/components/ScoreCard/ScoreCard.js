@@ -39,7 +39,7 @@ export default function ScoreCard(props) {
             alt={homeTeam + " logo"}
           />
           <div>{homeAbbreviation}</div>
-          <div>{homeScore}</div>
+          <div className="team-score">{homeScore}</div>
         </Col>
         <Col xs style={{ borderRight: "2px solid grey" }}>
           <div>{periodStatus}</div>
@@ -51,7 +51,7 @@ export default function ScoreCard(props) {
             alt={awayTeam + " logo"}
           />
           <div>{awayAbbreviation}</div>
-          <div>{awayScore}</div>
+          <div className="team-score">{awayScore}</div>
         </Col>
       </Row>
     </Container>
