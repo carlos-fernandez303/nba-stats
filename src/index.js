@@ -19,7 +19,7 @@ ReactDOM.render(
           <Route path="teams" element={<Teams />} />
           <Route path="about" element={<About />} />
           <Route path="players" element={<Players />} />
-          <Route path="players/:name/:id" element={<Results />} />
+          <Route path="players/:name/:id/:team" element={<Results />} />
           <Route
             path="*"
             element={

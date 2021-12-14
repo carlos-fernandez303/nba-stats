@@ -29,24 +29,31 @@ export default function ScoreCard(props) {
     >
       <Row className="border-container justify-content-md-center">
         <Col
+          className="scorecard-col"
           xs
           style={{
             borderRight: "2px solid grey",
           }}
         >
           <img
+            className="team-logo"
             src={"/nba-team-logos/" + homeTeam + ".png"}
             alt={homeTeam + " logo"}
           />
           <div>{homeAbbreviation}</div>
           <div className="team-score">{homeScore}</div>
         </Col>
-        <Col xs style={{ borderRight: "2px solid grey" }}>
+        <Col
+          xs
+          className="scorecard-col"
+          style={{ borderRight: "2px solid grey" }}
+        >
           <div>{periodStatus}</div>
           <div>{timeStatus}</div>
         </Col>
-        <Col xs>
+        <Col xs className="scorecard-col">
           <img
+            className="team-logo"
             src={"/nba-team-logos/" + awayTeam + ".png"}
             alt={awayTeam + " logo"}
           />

@@ -35,6 +35,9 @@ const Players = () => {
           alert(error);
         }
       );
+    return () => {
+      setPlayers([]);
+    };
   }, [playerName]);
 
   const handleSubmit = (e) => {
@@ -72,6 +75,11 @@ const Players = () => {
               <InputGroup
                 value={playerName}
                 onChange={(e) => handleChange(e.target.value)}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setPlayers([]);
+                  }, 100);
+                }}
               >
                 <FormControl
                   required
@@ -89,7 +97,11 @@ const Players = () => {
                     Submit
                   </Button>
                 ) : (
-                  <Link to={`${players[0].id}`}>
+                  <Link
+                    to={`${players[0].first_name}-${players[0].last_name}/${
+                      players[0].id
+                    }/${players[0].team.full_name.split(" ").join("-")}`}
+                  >
                     <Button
                       variant="dark"
                       size="lg"
@@ -113,8 +125,11 @@ const Players = () => {
             <div className="suggestion-box">
               {players.slice(0, 5).map((el) => (
                 <Link
+                  key={el.id}
                   className="suggestion-link"
-                  to={`${el.first_name}-${el.last_name}/${el.id}`}
+                  to={`${el.first_name}-${el.last_name}/${
+                    el.id
+                  }/${players[0].team.full_name.split(" ").join("-")}`}
                 >
                   <div className="suggestion-entry" key={el.id}>
                     {el.first_name + " " + el.last_name}

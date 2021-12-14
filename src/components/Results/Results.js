@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "./Results.css";
 
 export default function Results(props) {
   const [headshot, setHeadshot] = useState(null);
   const [player, setPlayer] = useState(null);
-  const { id, name } = useParams();
+  const { id, name, team } = useParams();
 
   const [firstName, lastName] = name.split("-");
+  const teamName = team.split("-").join(" ");
 
   useEffect(() => {
     fetch("http://data.nba.net/data/10s/prod/v1/2021/players.json")
@@ -19,6 +22,7 @@ export default function Results(props) {
               player.firstName === firstName && player.lastName === lastName
           )
         );
+        console.log(headshot);
       });
   }, [firstName, lastName]);
 
@@ -34,15 +38,38 @@ export default function Results(props) {
   }, [id]);
 
   return (
-    <div>
-      {player && headshot ? (
-        <img
-          alt="nba-headshot"
-          src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${headshot.personId}.png`}
-        ></img>
-      ) : (
-        ""
-      )}
-    </div>
+    <Container>
+      <Row>
+        <Col className="stat-col">
+          {headshot ? (
+            <img
+              className="nba-headshot"
+              alt="nba-headshot"
+              src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${headshot.personId}.png`}
+            ></img>
+          ) : (
+            ""
+          )}
+        </Col>
+        {headshot ? (
+          <Col style={{ textAlign: "left" }}>
+            <Row className="header-stats">
+              {teamName} {" | #"}
+              {headshot.jersey}
+              {" | "}
+              {headshot.pos}
+            </Row>
+            <Row className="player-name">
+              {firstName} {lastName}
+            </Row>
+          </Col>
+        ) : (
+          ""
+        )}
+      </Row>
+      <Row>
+        <Col className="test">PPG</Col>
+      </Row>
+    </Container>
   );
 }
