@@ -56,7 +56,7 @@ const Players = () => {
   return (
     <Container>
       <Row>
-        <Col md={8} lg={3} xl={5} className="mx-auto">
+        <Col md={9} lg={8} xl={8} className="prompt-col mx-auto">
           <h1>
             Interested in a specific player's season averages? 📊
             <br />
@@ -67,7 +67,7 @@ const Players = () => {
         </Col>
       </Row>
       <Row>
-        <Col md={8} lg={3} xl={5} className="mx-auto mt-5">
+        <Col md={5} lg={5} xl={5} className="mx-auto mt-5">
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <h3>First and last name</h3>
@@ -103,6 +103,7 @@ const Players = () => {
                     }/${players[0].team.full_name.split(" ").join("-")}`}
                   >
                     <Button
+                      type="submit"
                       variant="dark"
                       size="lg"
                       style={{ height: "5rem", width: "7rem" }}
@@ -121,7 +122,7 @@ const Players = () => {
         {isLoading || players.length === 0 || players[0].id === null ? (
           ""
         ) : (
-          <Col md={8} lg={3} xl={5} className="mx-auto">
+          <Col md={5} lg={5} xl={5} className="mx-auto">
             <div className="suggestion-box">
               {players.slice(0, 5).map((el) => (
                 <Link

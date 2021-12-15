@@ -8,7 +8,10 @@ export default function Results(props) {
   const [player, setPlayer] = useState(null);
   const { id, name, team } = useParams();
 
-  const [firstName, lastName] = name.split("-");
+  let [firstName, ...lastName] = name.split("-");
+  if (lastName.length > 1) {
+    lastName = lastName.join("-");
+  }
   const teamName = team.split("-").join(" ");
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export default function Results(props) {
           )}
         </Col>
         {headshot ? (
-          <Col style={{ textAlign: "left" }}>
+          <Col className="name-stat-col" xl={6} lg={6} xs={12}>
             <Row className="header-stats">
               {teamName} {" | #"}
               {headshot.jersey}
@@ -67,9 +70,34 @@ export default function Results(props) {
           ""
         )}
       </Row>
-      <Row>
-        <Col className="test">PPG</Col>
-      </Row>
+      {player ? (
+        <Row className="stat-averages">
+          <Col className="base-stat" style={{ borderRight: "1px solid white" }}>
+            <Row style={{ fontSize: "2rem" }}>PPG</Row>
+            <Row>{player[0].pts}</Row>
+          </Col>
+          <Col className="base-stat" style={{ borderRight: "1px solid white" }}>
+            <Row style={{ fontSize: "2rem" }}>RPG</Row>
+            <Row>{player[0].reb}</Row>
+          </Col>
+          <Col className="base-stat" style={{ borderRight: "1px solid white" }}>
+            <Row style={{ fontSize: "2rem" }}>APG</Row>
+            <Row>{player[0].ast}</Row>
+          </Col>
+          <Col className="base-stat" style={{ borderRight: "1px solid white" }}>
+            <Row style={{ fontSize: "2rem" }}>BPG</Row>
+            <Row>{player[0].blk}</Row>
+          </Col>
+          <Col className="base-stat" style={{ borderRight: "1px solid white" }}>
+            <Row style={{ fontSize: "2rem" }}>SPG</Row>
+            <Row>{player[0].stl}</Row>
+          </Col>
+        </Row>
+      ) : (
+        ""
+      )}
+
+      <Row></Row>
     </Container>
   );
 }
