@@ -1,22 +1,22 @@
-h1 {
+.prompt-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prompt-col h1 {
   font-size: 3rem;
   font-family: "Oswald", sans-serif;
   text-align: center;
 }
 
-h2 {
+.prompt-col h2 {
   font-size: 2rem;
   font-family: "Oswald", sans-serif;
 }
 
-h3 {
+.form-col h3 {
   font-size: 1.5rem;
-}
-
-.prompt-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .players-button {

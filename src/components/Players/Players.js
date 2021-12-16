@@ -17,6 +17,7 @@ const Players = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const firstUpdate = useRef(true);
+  let teamName;
 
   useEffect(() => {
     if (firstUpdate.current) {
@@ -67,7 +68,7 @@ const Players = () => {
         </Col>
       </Row>
       <Row>
-        <Col md={5} lg={5} xl={5} className="mx-auto mt-5">
+        <Col md={5} lg={5} xl={5} className=" form-col mx-auto mt-5">
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <h3>First and last name</h3>
@@ -98,9 +99,9 @@ const Players = () => {
                   </Button>
                 ) : (
                   <Link
-                    to={`${players[0].first_name}-${players[0].last_name}/${
+                    to={`${players[0].first_name}_${players[0].last_name}/${
                       players[0].id
-                    }/${players[0].team.full_name.split(" ").join("-")}`}
+                    }/${players[0].team.full_name.split(" ").join("_")}`}
                   >
                     <Button
                       type="submit"
@@ -128,9 +129,9 @@ const Players = () => {
                 <Link
                   key={el.id}
                   className="suggestion-link"
-                  to={`${el.first_name}-${el.last_name}/${
+                  to={`${el.first_name}_${el.last_name}/${
                     el.id
-                  }/${players[0].team.full_name.split(" ").join("-")}`}
+                  }/${el.team.full_name.split(" ").join("_")}`}
                 >
                   <div className="suggestion-entry" key={el.id}>
                     {el.first_name + " " + el.last_name}

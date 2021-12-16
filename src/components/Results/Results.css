@@ -27,6 +27,7 @@
   font-size: 5rem;
   font-weight: 800;
   line-height: 60px;
+  text-align: center;
 }
 
 .name-stat-col {
@@ -43,6 +44,43 @@
   align-self: center;
 }
 
+.base-stat .stat-value {
+  font-weight: 900;
+}
+
+.player-background {
+  color: white;
+  background-color: #333;
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.background-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+
+.background-title {
+  font-size: 1.15rem;
+}
+
+.background-value {
+  font-size: 1.75rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .background-title {
+    font-size: 1rem !important;
+  }
+
+  .background-value {
+    font-size: 1.25rem !important;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .header-stats {
     font-size: 1.5rem;
@@ -52,6 +90,25 @@
   .player-name {
     font-size: 3rem;
   }
+
+  .base-stat .stat-title {
+    font-size: 1.5rem !important;
+  }
+
+  .base-stat .stat-value {
+    font-size: 2rem !important;
+  }
+  .background-title {
+    font-size: 0.85rem !important;
+  }
+
+  .background-value {
+    font-size: 1rem !important;
+  }
+
+  .draft-value {
+    font-size: 0.85rem !important;
+  }
 }
 
 @media only screen and (max-height: 400px) {
@@ -60,6 +117,19 @@
   }
 }
 
-h1 {
-  text-align: left;
+@media only screen and (max-width: 280px) {
+  .base-stat .stat-title {
+    font-size: 1.25rem !important;
+  }
+
+  .base-stat .stat-value {
+    font-size: 1.5rem !important;
+  }
+
+  .background-title {
+    font-size: 1rem;
+  }
+  .background-value {
+    font-size: 0.75rem;
+  }
 }
