@@ -31,16 +31,8 @@ export default function Results(props) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("data", data);
         setPlayer(data.data);
-      });
-
-    fetch(
-      `https://www.balldontlie.io/api/v1/stats?player_ids[]=${id}&start_date=2021-12-09`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
       });
   }, [id]);
 
@@ -98,7 +90,7 @@ export default function Results(props) {
           ""
         )}
       </Row>
-      {player && headshot ? (
+      {player !== [] && player !== null && headshot ? (
         <>
           <Row className="stat-averages">
             <Col
@@ -108,7 +100,7 @@ export default function Results(props) {
               <Row className="stat-title" style={{ fontSize: "2rem" }}>
                 PPG
               </Row>
-              <Row className="stat-value">{player[0].pts}</Row>
+              <Row className="stat-value">{player[0] ? player[0].pts : 0}</Row>
             </Col>
             <Col
               className="base-stat"
@@ -117,7 +109,7 @@ export default function Results(props) {
               <Row className="stat-title" style={{ fontSize: "2rem" }}>
                 RPG
               </Row>
-              <Row className="stat-value">{player[0].reb}</Row>
+              <Row className="stat-value">{player[0] ? player[0].reb : 0}</Row>
             </Col>
             <Col
               className="base-stat"
@@ -126,7 +118,7 @@ export default function Results(props) {
               <Row className="stat-title" style={{ fontSize: "2rem" }}>
                 APG
               </Row>
-              <Row className="stat-value">{player[0].ast}</Row>
+              <Row className="stat-value">{player[0] ? player[0].ast : 0}</Row>
             </Col>
             <Col
               className="base-stat"
@@ -135,7 +127,7 @@ export default function Results(props) {
               <Row className="stat-title" style={{ fontSize: "2rem" }}>
                 BPG
               </Row>
-              <Row className="stat-value">{player[0].blk}</Row>
+              <Row className="stat-value">{player[0] ? player[0].blk : 0}</Row>
             </Col>
             <Col
               className="base-stat"
@@ -144,7 +136,7 @@ export default function Results(props) {
               <Row className="stat-title" style={{ fontSize: "2rem" }}>
                 SPG
               </Row>
-              <Row className="stat-value">{player[0].stl}</Row>
+              <Row className="stat-value">{player[0] ? player.stl : 0}</Row>
             </Col>
           </Row>
 

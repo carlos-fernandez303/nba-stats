@@ -29,7 +29,7 @@ export default function ScoreCard(props) {
     >
       <Row className="border-container justify-content-md-center">
         <Col
-          className="scorecard-col"
+          className="points-col"
           xs
           style={{
             borderRight: "2px solid grey",
@@ -43,15 +43,11 @@ export default function ScoreCard(props) {
           <div>{homeAbbreviation}</div>
           <div className="team-score">{homeScore}</div>
         </Col>
-        <Col
-          xs
-          className="scorecard-col"
-          style={{ borderRight: "2px solid grey" }}
-        >
+        <Col xs className="time-period-col">
           <div>{periodStatus}</div>
           <div>{timeStatus}</div>
         </Col>
-        <Col xs className="scorecard-col">
+        <Col xs className="points-col" style={{ borderLeft: "2px solid grey" }}>
           <img
             className="team-logo"
             src={"/nba-team-logos/" + awayTeam + ".png"}

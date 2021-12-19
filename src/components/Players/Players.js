@@ -3,13 +3,16 @@ import { useEffect, useState, useRef } from "react";
 import {
   Form,
   FormControl,
-  Button,
   InputGroup,
   Container,
   Row,
   Col,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const Players = () => {
   const [players, setPlayers] = useState([{ id: null }]);
@@ -17,7 +20,14 @@ const Players = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const firstUpdate = useRef(true);
-  let teamName;
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#333",
+      },
+    },
+  });
 
   useEffect(() => {
     if (firstUpdate.current) {
@@ -41,10 +51,6 @@ const Players = () => {
     };
   }, [playerName]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const handleChange = (name) => {
     if (name.length <= 2) {
       setIsLoading(true);
@@ -67,81 +73,65 @@ const Players = () => {
           <h2>Enter a name below to find out!</h2>
         </Col>
       </Row>
-      <Row>
-        <Col md={5} lg={5} xl={5} className=" form-col mx-auto mt-5">
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <h3>First and last name</h3>
 
-              <InputGroup
-                value={playerName}
-                onChange={(e) => handleChange(e.target.value)}
-                onBlur={() => {
-                  setTimeout(() => {
-                    setPlayers([]);
-                  }, 100);
-                }}
-              >
-                <FormControl
-                  required
-                  placeholder="e.g. 'Lebron James'"
-                  aria-label="Player name"
-                  aria-describedby="basic-addon2"
-                  style={{
-                    border: "1px solid black",
-                    height: "5rem",
-                    fontSize: "2rem",
-                  }}
-                />
-                {players.length === 0 || players[0].id == null ? (
-                  <Button variant="dark" size="lg">
-                    Submit
-                  </Button>
-                ) : (
-                  <Link
-                    to={`${players[0].first_name}_${players[0].last_name}/${
-                      players[0].id
-                    }/${players[0].team.full_name.split(" ").join("_")}`}
-                  >
-                    <Button
-                      type="submit"
-                      variant="dark"
-                      size="lg"
-                      style={{ height: "5rem", width: "7rem" }}
+      {players && (
+        <Row>
+          <Col md={5} lg={5} xl={5} className="form-col mx-auto mt-5">
+            <Form>
+              <Form.Group>
+                <h3>First and Last Name</h3>
+                <div className="input-container">
+                  <Autocomplete
+                    sx={{ width: "50rem" }}
+                    onBlur={() => {
+                      setTimeout(() => setPlayers([]));
+                    }}
+                    onInputChange={(event, newValue) => handleChange(newValue)}
+                    options={
+                      players
+                        ? players.map(
+                            (option) =>
+                              option.first_name + " " + option.last_name
+                          )
+                        : ""
+                    }
+                    renderInput={(params) => (
+                      <TextField {...params} label="e.g. 'Lebron James" />
+                    )}
+                  />
+                  {/* {(players.length === 0 || players[0].id == null) && (
+                    <ThemeProvider theme={theme}>
+                      <Button className="submit-button" variant="contained">
+                        Submit
+                      </Button>
+                    </ThemeProvider>
+                  )} */}
+
+                  <ThemeProvider theme={theme}>
+                    <Link
+                      to={
+                        players.length !== 0 && players[0].id !== null
+                          ? `${players[0].first_name}_${players[0].last_name}/${
+                              players[0].id
+                            }/${players[0].team.full_name.split(" ").join("_")}`
+                          : "#"
+                      }
                     >
-                      Submit
-                    </Button>
-                  </Link>
-                )}
-              </InputGroup>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
-
-      <Row>
-        {isLoading || players.length === 0 || players[0].id === null ? (
-          ""
-        ) : (
-          <Col md={5} lg={5} xl={5} className="mx-auto">
-            <div className="suggestion-box">
-              {players.slice(0, 5).map((el) => (
-                <Link
-                  key={el.id}
-                  className="suggestion-link"
-                  to={`${el.first_name}_${el.last_name}/${
-                    el.id
-                  }/${el.team.full_name.split(" ").join("_")}`}
-                >
-                  <div className="suggestion-entry" key={el.id}>
-                    {el.first_name + " " + el.last_name}
-                  </div>
-                </Link>
-              ))}
-            </div>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        className="submit-button"
+                      >
+                        Submit
+                      </Button>
+                    </Link>
+                  </ThemeProvider>
+                </div>
+              </Form.Group>
+            </Form>
           </Col>
-        )}
-      </Row>
+        </Row>
+      )}
     </Container>
   );
 };

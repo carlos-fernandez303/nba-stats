@@ -10,13 +10,27 @@
   text-align: center;
 }
 
+.submit-button {
+  height: 5rem;
+  width: 7rem;
+}
+
 .prompt-col h2 {
   font-size: 2rem;
   font-family: "Oswald", sans-serif;
 }
 
 .form-col h3 {
+  display: flex;
   font-size: 1.5rem;
+}
+
+.input-container {
+  display: flex;
+}
+
+.input-container .link {
+  width: 200px;
 }
 
 .players-button {
