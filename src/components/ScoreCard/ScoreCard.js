@@ -21,10 +21,10 @@ export default function ScoreCard(props) {
   ];
   return (
     <Container
+      className="scorecard-container"
       style={{
         paddingTop: "4rem",
         paddingBottom: "4rem",
-        maxWidth: "50rem",
       }}
     >
       <Row className="border-container justify-content-md-center">

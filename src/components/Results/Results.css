@@ -133,3 +133,8 @@
     font-size: 0.75rem;
   }
 }
+
+.no-player {
+  text-align: center;
+  font-size: 4rem;
+}

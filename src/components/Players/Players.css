@@ -20,6 +20,10 @@
   font-family: "Oswald", sans-serif;
 }
 
+.row h3 {
+  padding-bottom: 1rem;
+}
+
 .form-col h3 {
   display: flex;
   font-size: 1.5rem;
@@ -35,6 +39,14 @@
 
 .players-button {
   background-color: lightgray;
+}
+
+.warning {
+  padding-top: 3rem;
+  font-size: 1.25rem;
+  font-family: "Roboto", monospace;
+  color: red;
+  font-weight: 900;
 }
 
 .suggestion-entry {

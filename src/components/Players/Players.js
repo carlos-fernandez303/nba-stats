@@ -15,12 +15,11 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 const Players = () => {
-  const [players, setPlayers] = useState([{ id: null }]);
+  const [players, setPlayers] = useState([
+    { id: null, first_name: "No", last_name: "Options" },
+  ]);
   const [playerName, setPlayerName] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
   const firstUpdate = useRef(true);
-
   const theme = createTheme({
     palette: {
       primary: {
@@ -39,7 +38,7 @@ const Players = () => {
       .then(
         (data) => {
           console.log(data.data);
-          setIsLoading(false);
+
           setPlayers(data.data);
         },
         (error) => {
@@ -53,7 +52,6 @@ const Players = () => {
 
   const handleChange = (name) => {
     if (name.length <= 2) {
-      setIsLoading(true);
     }
     if (name.length > 2 && name.length <= 20) {
       setPlayerName(name);
@@ -70,7 +68,13 @@ const Players = () => {
             <br />
           </h1>
 
-          <h2>Enter a name below to find out!</h2>
+          <h2>
+            Enter a name below to find out!
+            <br />
+          </h2>
+          <h3 className="warning">
+            (Please note only current season averages are available){" "}
+          </h3>
         </Col>
       </Row>
 
@@ -84,31 +88,19 @@ const Players = () => {
                   <Autocomplete
                     sx={{ width: "50rem" }}
                     onBlur={() => {
-                      setTimeout(() => setPlayers([]));
+                      setTimeout(() => setPlayers([]), 200);
                     }}
                     onInputChange={(event, newValue) => handleChange(newValue)}
-                    options={
-                      players
-                        ? players.map(
-                            (option) =>
-                              option.first_name + " " + option.last_name
-                          )
-                        : ""
-                    }
+                    options={players.map(
+                      (option) => option.first_name + " " + option.last_name
+                    )}
                     renderInput={(params) => (
                       <TextField {...params} label="e.g. 'Lebron James" />
                     )}
                   />
-                  {/* {(players.length === 0 || players[0].id == null) && (
-                    <ThemeProvider theme={theme}>
-                      <Button className="submit-button" variant="contained">
-                        Submit
-                      </Button>
-                    </ThemeProvider>
-                  )} */}
-
                   <ThemeProvider theme={theme}>
                     <Link
+                      style={{ textDecoration: "none" }}
                       to={
                         players.length !== 0 && players[0].id !== null
                           ? `${players[0].first_name}_${players[0].last_name}/${
@@ -118,6 +110,7 @@ const Players = () => {
                       }
                     >
                       <Button
+                        style={{ height: "4.75rem" }}
                         type="submit"
                         variant="contained"
                         className="submit-button"

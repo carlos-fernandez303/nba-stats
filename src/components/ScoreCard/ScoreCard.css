@@ -11,6 +11,7 @@
   align-self: center;
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
+  text-align: center;
 }
 
 .team-score {
@@ -31,5 +32,13 @@
   color: black !important;
 }
 
-.col-2 {
+.scorecard-container {
+  max-width: 75rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .scorecard-container {
+    max-width: 50rem;
+    max-height: 25rem;
+  }
 }
