@@ -1,13 +1,6 @@
 import "./Players.css";
 import { useEffect, useState, useRef } from "react";
-import {
-  Form,
-  FormControl,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Form, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";

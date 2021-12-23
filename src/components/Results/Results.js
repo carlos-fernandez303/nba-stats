@@ -146,7 +146,9 @@ export default function Results(props) {
                   <Row className="stat-title" style={{ fontSize: "2rem" }}>
                     SPG
                   </Row>
-                  <Row className="stat-value">{player[0] ? player.stl : 0}</Row>
+                  <Row className="stat-value">
+                    {player[0] ? player[0].stl : 0}
+                  </Row>
                 </Col>
               </Row>
 
