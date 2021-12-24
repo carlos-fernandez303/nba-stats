@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Button, Table } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import "./Teams.css";
 export default function Teams() {
   const [teams, setTeams] = useState(null);
-  const [toggle, setToggle] = useState(0);
+  const [toggle, setToggle] = useState({
+    index: 0,
+    conf: "Eastern conference",
+  });
 
   useEffect(() => {
     fetch(
@@ -20,14 +23,31 @@ export default function Teams() {
       {teams && (
         <Container>
           <Row>
+            <Col className="nba-standings-header">
+              <h1>Current 2021-2022 NBA Standings</h1>
+              <h2>
+                Displaying: <span>{`${toggle.conf}`}</span>
+              </h2>
+            </Col>
+          </Row>
+          <Row>
             <Col className="conference-buttons">
-              <Button variant="dark" onClick={() => setToggle(0)}>
+              <div
+                style={{ borderRight: "1px solid white" }}
+                onClick={() =>
+                  setToggle({ index: 0, conf: "Eastern conference" })
+                }
+              >
                 Eastern Conference
-              </Button>
+              </div>
 
-              <Button variant="dark" onClick={() => setToggle(1)}>
+              <div
+                onClick={() =>
+                  setToggle({ index: 1, conf: "Western conference" })
+                }
+              >
                 Western Conference
-              </Button>
+              </div>
             </Col>
           </Row>
           <Row>
@@ -55,7 +75,7 @@ export default function Teams() {
                   </tr>
                 </thead>
                 <tbody>
-                  {toggle === 0 &&
+                  {toggle.index === 0 &&
                     teams.east.map((stat) => (
                       <tr>
                         <td className="team-cell">
@@ -81,7 +101,7 @@ export default function Teams() {
                         </td>
                       </tr>
                     ))}
-                  {toggle === 1 &&
+                  {toggle.index === 1 &&
                     teams.west.map((stat) => (
                       <tr>
                         <td className="team-cell">

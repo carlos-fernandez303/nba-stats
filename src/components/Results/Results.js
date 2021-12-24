@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./Results.css";
 
-export default function Results(props) {
+export default function Results() {
   const [headshot, setHeadshot] = useState(null);
   const [player, setPlayer] = useState(null);
   const { id, name, team } = useParams();
@@ -16,6 +16,7 @@ export default function Results(props) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.league.standard);
+
         setHeadshot(
           data.league.standard.find(
             (player) =>

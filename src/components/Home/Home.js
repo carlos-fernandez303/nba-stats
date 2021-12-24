@@ -42,17 +42,26 @@ const Home = () => {
   return (
     <Container>
       <Row>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="text-center">
-            <DatePicker
-              value={formDate}
-              onChange={(date) => setFormDate(date)}
-            />
-            <Button variant="dark" type="submit">
-              Submit
-            </Button>
-          </Form.Group>
-        </Form>
+        <Col className="choose-date">
+          <h1>Missed the games the other day?</h1>
+          <h2>Choose a date: </h2>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="text-center">
+              <DatePicker
+                className="date-picker"
+                value={formDate}
+                onChange={(date) => setFormDate(date)}
+              />
+              <Button className="date-picker-btn" variant="dark" type="submit">
+                Submit
+              </Button>
+            </Form.Group>
+          </Form>
+        </Col>
       </Row>
       <Row>
         <Col className="games-header">

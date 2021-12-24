@@ -52,7 +52,7 @@ const Players = () => {
   };
 
   return (
-    <Container>
+    <Container className="player-container">
       <Row>
         <Col md={9} lg={8} xl={8} className="prompt-col mx-auto">
           <h1>

@@ -1,3 +1,26 @@
+.choose-date {
+  text-align: center;
+  padding-bottom: 1rem;
+  font-family: "Oswald", monospace;
+}
+
+.choose-date h1 {
+  font-weight: 900;
+}
+
+.choose-date h2 {
+  padding-top: 1rem;
+}
+
+.date-picker {
+  width: 20rem;
+  font-size: 2rem;
+}
+
+.date-picker-btn {
+  height: 3.25rem;
+  margin-bottom: 1.2rem;
+}
 .games-header {
   text-align: center;
   color: black;
