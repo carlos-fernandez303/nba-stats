@@ -12,7 +12,7 @@ export default function Results() {
   const teamName = team.split("_").join(" ");
 
   useEffect(() => {
-    fetch("http://data.nba.net/data/10s/prod/v1/2021/players.json")
+    fetch("https://data.nba.net/data/10s/prod/v1/2021/players.json")
       .then((response) => response.json())
       .then((data) => {
         console.log(data.league.standard);
