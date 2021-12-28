@@ -47,6 +47,7 @@
   font-family: "Roboto", monospace;
   color: red;
   font-weight: 900;
+  text-align: center;
 }
 
 .suggestion-entry {
@@ -72,5 +73,11 @@
 @media only screen and (min-height: 900px) {
   .player-container {
     padding-top: 15rem;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .warning {
+    font-size: 1rem;
   }
 }
