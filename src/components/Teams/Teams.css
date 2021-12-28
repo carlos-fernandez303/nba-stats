@@ -59,3 +59,25 @@ td {
 .conference-buttons div:hover {
   background-color: grey;
 }
+
+@media only screen and (max-width: 400px) {
+  .nba-standings-header h1 {
+    font-size: 2rem;
+  }
+
+  .nba-standings-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .conference-buttons div {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .conference-buttons div {
+    font-size: 1.75rem;
+  }
+}

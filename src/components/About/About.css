@@ -1,4 +1,41 @@
 .main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: "Roboto", monospace;
+}
+
+.main-content p {
+  max-width: 75ch;
   font-size: 2rem;
+}
+
+.main-content img {
+  padding-bottom: 5rem;
+  height: auto;
+  width: 40rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .main-content p {
+    font-size: 1.5rem;
+    max-width: 45ch;
+  }
+
+  .main-content img {
+    height: auto;
+    width: 30rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .main-content p {
+    font-size: 1.5rem;
+    max-width: 30ch;
+  }
+
+  .main-content img {
+    height: auto;
+    width: 25rem;
+  }
 }
