@@ -1,7 +1,7 @@
 import "./Home.css";
 import { useEffect, useState } from "react";
 import ScoreCard from "../ScoreCard/ScoreCard";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import DatePicker from "react-date-picker";
 import "react-datepicker/dist/react-datepicker.css";
 const Home = () => {
