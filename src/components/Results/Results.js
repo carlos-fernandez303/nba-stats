@@ -64,7 +64,7 @@ export default function Results() {
   return (
     <>
       {headshot ? (
-        <Container>
+        <Container className="results-container">
           <Row>
             <Col className="stat-col">
               {headshot ? (

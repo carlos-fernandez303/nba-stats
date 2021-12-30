@@ -32,8 +32,8 @@ const Home = () => {
       );
   }, [date]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleChange = (date) => {
+    setFormDate(date);
     let gameDate = formDate.toISOString().split("T")[0].split("-");
     setDate([gameDate[0], gameDate[1], gameDate[2]]);
     console.log(date);
@@ -49,16 +49,13 @@ const Home = () => {
       </Row>
       <Row>
         <Col>
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <Form.Group className="text-center">
               <DatePicker
                 className="date-picker"
                 value={formDate}
-                onChange={(date) => setFormDate(date)}
+                onChange={(date) => handleChange(date)}
               />
-              <Button className="date-picker-btn" variant="dark" type="submit">
-                Submit
-              </Button>
             </Form.Group>
           </Form>
         </Col>
