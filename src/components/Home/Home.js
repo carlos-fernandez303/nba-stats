@@ -33,9 +33,9 @@ const Home = () => {
   }, [date]);
 
   const handleChange = (date) => {
-    setFormDate(date);
-    let gameDate = formDate.toISOString().split("T")[0].split("-");
+    let gameDate = date.toISOString().split("T")[0].split("-");
     setDate([gameDate[0], gameDate[1], gameDate[2]]);
+    setFormDate(date);
     console.log(date);
   };
 
