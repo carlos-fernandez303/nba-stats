@@ -1,7 +1,7 @@
 import "./Home.css";
 import { useEffect, useState } from "react";
 import ScoreCard from "../ScoreCard/ScoreCard";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import DatePicker from "react-date-picker";
 import "react-datepicker/dist/react-datepicker.css";
 const Home = () => {
@@ -32,10 +32,10 @@ const Home = () => {
       );
   }, [date]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let gameDate = formDate.toISOString().split("T")[0].split("-");
+  const handleChange = (date) => {
+    let gameDate = date.toISOString().split("T")[0].split("-");
     setDate([gameDate[0], gameDate[1], gameDate[2]]);
+    setFormDate(date);
     console.log(date);
   };
 
@@ -49,16 +49,13 @@ const Home = () => {
       </Row>
       <Row>
         <Col>
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <Form.Group className="text-center">
               <DatePicker
                 className="date-picker"
                 value={formDate}
-                onChange={(date) => setFormDate(date)}
+                onChange={(date) => handleChange(date)}
               />
-              <Button className="date-picker-btn" variant="dark" type="submit">
-                Submit
-              </Button>
             </Form.Group>
           </Form>
         </Col>

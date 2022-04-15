@@ -44,9 +44,7 @@ const Players = () => {
   }, [playerName]);
 
   const handleChange = (name) => {
-    if (name.length <= 2) {
-    }
-    if (name.length > 2 && name.length <= 20) {
+    if (name.length <= 20) {
       setPlayerName(name);
     }
   };
