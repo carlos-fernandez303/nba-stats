@@ -84,8 +84,9 @@ const Home = () => {
             ))
           ) : (
             <p className="season-redirect">
-              The 2021-2022 NBA Regular Season is now over. Please feel free to
-              use the Player search function or the Team standings page!
+              The 2021-2022 NBA Regular Season is now over. You can still look
+              up previous games from this season. Please feel free to use the
+              Player search function or the Team standings page!
             </p>
           )}
         </>
