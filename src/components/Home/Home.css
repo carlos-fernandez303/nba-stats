@@ -1,3 +1,10 @@
+.season-redirect {
+  font-size: 1.5rem;
+  padding-top: 1rem;
+  text-align: center;
+  color: red
+}
+
 .choose-date {
   text-align: center;
   padding-bottom: 1rem;

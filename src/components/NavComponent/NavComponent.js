@@ -1,12 +1,16 @@
 import "./NavComponent.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavComponent = () => {
+  const [onToggle, setToggle] = useState(false);
   return (
     <>
       <Navbar
+        onToggle={() => setToggle(true)}
+        collapseOnSelect
         fixed="top"
         expand="lg"
         style={{
@@ -34,17 +38,17 @@ const NavComponent = () => {
             style={{ backgroundColor: "#333" }}
           >
             <Nav className="me-auto" style={{ paddingLeft: "4rem" }}>
-              <Nav.Link as="div">
+              <Nav.Link eventKey="1" as="div">
                 <Link to="players" className="nav-links">
                   Players
                 </Link>
               </Nav.Link>
-              <Nav.Link as="div">
+              <Nav.Link eventKey="2" as="div">
                 <Link to="teams" className="nav-links">
                   Teams
                 </Link>
               </Nav.Link>
-              <Nav.Link as="div">
+              <Nav.Link eventKey="3" as="div">
                 <Link to="about" className="nav-links">
                   About
                 </Link>

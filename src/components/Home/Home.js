@@ -69,21 +69,32 @@ const Home = () => {
         </Col>
       </Row>
 
-      {gameData
-        ? gameData.map((game) => (
-            <ScoreCard
-              key={game.id}
-              teams={[game.home_team.full_name, game.visitor_team.full_name]}
-              teamsAbbreviation={[
-                game.home_team.abbreviation,
-                game.visitor_team.abbreviation,
-              ]}
-              period={game.period}
-              scores={[game.home_team_score, game.visitor_team_score]}
-              time={game.time}
-            />
-          ))
-        : ""}
+      {gameData ? (
+        <>
+          {gameData.length !== 0 ? (
+            gameData.map((game) => (
+              <ScoreCard
+                key={game.id}
+                teams={[game.home_team.full_name, game.visitor_team.full_name]}
+                teamsAbbreviation={[
+                  game.home_team.abbreviation,
+                  game.visitor_team.abbreviation,
+                ]}
+                period={game.period}
+                scores={[game.home_team_score, game.visitor_team_score]}
+                time={game.time}
+              />
+            ))
+          ) : (
+            <p className="season-redirect">
+              The 2021-2022 NBA Regular Season is now over. Please feel free to
+              use the Player search function or the Team standings page!
+            </p>
+          )}
+        </>
+      ) : (
+        ""
+      )}
     </Container>
   );
 };
