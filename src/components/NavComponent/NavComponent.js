@@ -5,11 +5,9 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavComponent = () => {
-  const [onToggle, setToggle] = useState(false);
   return (
     <>
       <Navbar
-        onToggle={() => setToggle(true)}
         collapseOnSelect
         fixed="top"
         expand="lg"
