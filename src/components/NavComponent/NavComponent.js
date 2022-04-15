@@ -1,7 +1,6 @@
 import "./NavComponent.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavComponent = () => {
